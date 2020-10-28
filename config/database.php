@@ -6,8 +6,8 @@ ini_set("display_errors", 1);
 /*Databas inställningar (studentmysql)
 define("SERVERNAME", "studentmysql.miun.se");
 define("USERNAME", "saan1906");
-define("PASSWORD", "saan1906");
-define("DBNAME", "97xgd5u6");
+define("PASSWORD", "97xgd5u6");
+define("DBNAME", "saan1906");
 */
 
 //Databas inställningar (localhost)
