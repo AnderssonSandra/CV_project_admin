@@ -1,0 +1,527 @@
+/*Reset CSS*/
+html, body, div, span, object, iframe, figure, h1, h2, h3, h4, h5, h6, p, blockquote, pre, a, code, em, img, small, strike, strong, sub, sup, tt, b, u, i, ol, ul, li, fieldset, form, label, table, caption, tbody, tfoot, thead, tr, th, td, main, canvas, embed, footer, header, nav, section, video{
+    margin: 0;
+    padding: 0;
+    border: 0;
+    font-size: 100%;
+    font: inherit;
+    vertical-align: baseline;
+    text-rendering: optimizeLegibility;
+    -webkit-font-smoothing: antialiased;
+    text-size-adjust: none;
+}
+
+footer, header, nav, section, main{
+    display: block;
+}
+
+body{
+    line-height: 1;
+}
+
+ol, ul{
+    list-style: none;
+}
+
+blockquote, q{
+    quotes: none;
+}
+
+blockquote:before, blockquote:after, q:before, q:after{
+    content: '';
+    content: none;
+}
+
+table{
+    border-collapse: collapse;
+    border-spacing: 0;
+}
+
+input{
+    -webkit-appearance: none;
+    border-radius: 0;
+}
+
+html, body {
+    margin: 0;
+    width: 100%;
+    height: 100%;
+    scroll-behavior: smooth;
+}
+
+/*Fonts*/
+h1, 
+h2, 
+h3, 
+h4, 
+h5, 
+h6
+{
+    font-family: 'Peddana', serif;
+    text-transform: capitalize;
+    color: #000000;
+}
+
+p, 
+span,
+label,
+th,
+td,
+a,
+li
+{
+    font-family: 'Montserrat', sans-serif;
+    color: #000000;
+    line-height: 1.8;
+    font-size: 1.2em;
+}
+
+h2 {
+    font-size: 5em;
+    padding: 2em 0 0 1.5em;
+    display: block;
+    width: 100%;
+    box-sizing: border-box;
+}
+
+.admin-h2 {
+    padding: 2em 0 0 0;
+    text-align: center;
+    font-size: 3.5em;
+}
+
+/*message*/
+.message {
+    margin: 3em 0 0 0.5em;
+    color: #BC8373;
+    font-weight: bold;
+    text-align: center;
+    font-size: 1.4em;
+}
+
+/*responsive design for fonts*/
+/*tablet*/
+@media (max-width: 8500px) {
+    h2 {
+        font-size: 3.5em;
+        padding: 2em 0 0 0.5em
+    }
+
+    .admin-h2 {
+        padding: 1em 0 0 0;
+    }
+}
+
+/*phones*/
+@media (max-width: 600px) {
+    h2 {
+        font-size: 2.5em;
+        padding: 2em 0 0 0.5em
+    }
+
+    .admin-h2 {
+        padding: 0.5em 0 0 0;
+        font-size: 2.5em;
+    }
+
+    p, 
+    span,
+    label,
+    th,
+    td,
+    a,
+    li
+    {
+        font-size: 1em;
+    }
+}
+
+/* Header*/
+.admin-header {
+    width: 100%;
+    box-sizing: border-box;
+    height: 300px;
+    margin: 0 auto;
+    background-color: #BC8373;
+}
+
+.admin-header h1 {
+    text-align: center;
+    font-size: 4em;
+    padding-top: 2em;
+}
+
+/*navigation*/
+.admin-main-nav {
+    width: 100%;
+    box-sizing: border-box;
+    padding: 3em 2em;
+}
+
+.admin-main-nav ul {
+    display: flex;
+    margin: auto;
+}
+
+.admin-main-nav li {
+    flex-grow: 1;
+    text-align: center;
+}
+
+.admin-main-nav a {
+    text-decoration: none;
+    font-size: 1.5em;
+}
+
+.admin-main-nav a:hover {
+    font-weight: bold;
+}
+
+.admin-main-nav .active {
+    text-decoration: underline;
+}
+
+/*responsive design for navigation*/
+/*tablet*/
+@media (max-width: 850px) {
+    .admin-main-nav a {
+        font-size: 1.2em;
+    }
+}
+
+/*phone*/
+@media (max-width: 600px) {
+    .admin-main-nav ul {
+        display: block;
+    }
+    .admin-main-nav li {
+        padding: 1em 0;
+        text-align: left;
+    }
+}
+
+/* Footer*/
+.admin-footer {
+    width: 100%;
+    box-sizing: border-box;
+    height: 200px;
+    margin: 0 auto;
+    background-color:  #BC8373;
+}
+
+.admin-footer-text {
+    text-align: center;
+    padding-top: 2.8em;
+    color: #FFFFFF;
+    font-size: 1.8em;
+    display: block;
+    text-decoration: none;
+}
+
+.admin-footer-text:hover {
+    text-decoration: underline;
+}
+
+/*responsive design for footer*/
+/*phone*/
+@media (max-width: 600px) {
+    .admin-footer-text {
+        font-size: 1.2em;
+    }
+}
+
+/*style for forms*/
+form {
+    width: 50%;
+    box-sizing: border-box;
+    margin: 2em auto;
+    background-color: #F0EDE9;
+    padding: 2em;
+}
+
+form input {
+    width: 100%;
+    display: block;
+    box-sizing: border-box;
+    font-family: 'Montserrat', sans-serif;
+    margin: 0.5em 0 2em 0;
+    padding: 1em;
+    font-size: 1.2em;
+    border: none;
+}
+form input[type=submit]{
+    background-color: #BC8373;
+    color: #FFFFFF;
+    margin-top: 2em;
+}
+
+form input[type=submit]:hover {
+    background-color: #000000;
+}
+
+form label {
+    font-size: 1.4em;
+    padding: 1.5em 0 0 0;
+}
+
+/*responsive design for form*/
+/*tablet*/
+@media (max-width: 850px) {
+    form {
+        width: 70%;
+    }
+}
+
+/*phone*/
+@media (max-width: 600px) {
+    form {
+        width: 98%;
+        padding: 1em;
+    }
+    form input {
+        margin: 0 0 0.5em 0;
+        font-size: 1em;
+    }
+    form label {
+        font-size: 1.1em;
+        padding: 1em 0 0 0;
+    }
+    form input[type=submit] {
+        margin-top: 1em;
+    }
+}
+
+/*style for show experiences*/
+.admin-show-experience {
+    width: 100%;
+    box-sizing: border-box;
+}
+
+.admin-show-experience .admin-experience {
+    margin: 2em auto;
+    background-color: #F0EDE9;
+    box-sizing: border-box;
+    padding: 2em;
+    width: 50%;
+}
+
+.admin-show-experience h3 {
+    font-size: 2em;
+    font-weight: bold;
+}
+
+.admin-show-experience p {
+    margin: 0.5em 0 2em 0;
+}
+
+.admin-show-experience a {
+    margin: 0.5em 0 2em 0;
+    display: block;
+    text-decoration: none;
+}
+
+.admin-show-experience a:hover {
+    text-decoration: underline;
+}
+
+.admin-show-experience .submit-btn {
+    display: block;
+    font-family: 'Montserrat', sans-serif;
+    font-size: 1.2em;
+    width: 100%;
+    box-sizing: border-box;
+    border: none;
+    background-color: #bc8373;
+    color: white;
+    padding: 1em;
+    margin-top: 1em;
+}
+
+.admin-show-experience .submit-btn:hover {
+    background-color: #000000;
+}
+
+/*responsive design for show experieces*/
+/*tablet*/
+@media (max-width: 850px) {
+    .admin-show-experience .admin-experience {
+        width: 70%;
+    }     
+}
+
+/*phone*/
+@media (max-width: 600px) {
+    .admin-show-experience .admin-experience {
+        width: 98%;
+    }
+    .admin-show-experience .submit-btn {
+        font-size: 1em;
+        padding: 0.5em;
+        margin-top: 1em;
+    }
+
+    .admin-show-experience h3 {
+        font-size: 1.5em;
+    }
+    
+    .admin-show-experience p {
+        margin: 0 0 1em 0;
+    }
+}
+
+/*style for popups*/
+
+/*overlay for all popups*/
+/*when active*/
+#overlay {
+    position: fixed;
+    opacity: 0;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    right: 0;
+    background-color: rgba(0, 0, 0, .5);
+    pointer-events: none;
+    transition: 200ms ease-in-out;
+}
+/*when ot active*/
+#overlay.active {
+    opacity: 1;
+    pointer-events: all;
+}
+
+/*education popup*/
+/*when active*/
+.cv-popup {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    box-sizing: border-box;
+    transform: translate(-50%, -50%) scale(0);
+    transition: 200ms ease-in-out;
+    background-color: #FFFFFF;
+    z-index: 10;
+    padding: 2em;
+    width: 60%;
+    max-width: 800px;
+}
+
+.cv-popup .cv-popup-heading {
+    display: block;
+    padding: 1em 0;
+    font-size: 2.5em;
+    color: #bc8373;
+} 
+
+.cv-popup .cv-popup-text {
+    padding-bottom: 2em;
+}
+
+.cv-popup .close-button {
+    color: #BC8373;
+    background-color: #FFFFFF;
+    border: none;
+    font-size: 2em;
+    float: right;
+    font-weight: bold;
+}
+
+.cv-popup .close-button:hover {
+    color: #000000;
+}
+
+/*when not*/
+.cv-popup.active {
+    transform: translate(-50%, -50%) scale(1);
+}
+
+/*project popup*/
+.cv-popup-techniques{
+    color: #BC8373;
+}
+
+.cv-popup-link {
+    text-decoration: none;
+    font-weight: bold;
+    font-size: 1em;
+    display: block;
+    margin-top: 2em;
+}
+
+.cv-popup-link:hover {
+    text-decoration: underline;
+}
+
+#cv-admin-popup {
+    width: 80%;
+    max-width: 1000px;
+    overflow: auto;
+}
+
+.update-form {
+    width: 100%;
+    overflow: auto;
+}
+
+.update-form form label {
+    font-size: 1.1em;
+    padding: 1em 0 0 0;
+}
+
+.update-form input {
+    margin: 0 0 0.5em 0;
+    padding: 0.5em;
+    font-size: 1.1em;
+}
+
+.update-form input[type=submit] {
+    margin-top: 1em;
+}
+
+/*responsive design for popups*/
+/*tablet*/
+@media (max-width: 850px) {
+    .cv-popup {
+        width: 70%;
+    }
+}
+
+/*phone*/
+@media (max-width: 600px) {
+    .cv-popup {
+        width: 100%;
+        height: 100%;
+    }
+
+    .close-button {
+        position: absolute;
+        display: block;
+        top: 0;
+        right: 0;
+        padding: 0.5em;
+    }
+
+    #cv-admin-popup {
+        width: 100%;
+        padding: 0;
+    }
+
+    .update-form {
+        width: 100%;
+        height: 100%;
+        margin: 0;
+    }
+    .update-form input {
+        margin: 0;
+        padding: 0.4em;
+    }
+    .update-form label {
+        font-size: 1em;
+        padding: 0;
+    }
+    .update-form input[type=submit] {
+        margin-top: 0.5em;
+        font-size: 1em;
+    }
+}
+
