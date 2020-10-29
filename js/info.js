@@ -1,10 +1,10 @@
 let formContainer = document.getElementById("info-form-div"); 
 
-window.addEventListener('load', getInfo(1), false);
+window.addEventListener('load', getInfo(2), false);
 
 function getInfo($id) {
     formContainer.innerHTML += '';
-    fetch('http://localhost/CV_project/CV_Backend/api/infoApi.php?id=' + $id, {
+    fetch('http://studenter.miun.se/~saan1906/writeable/dt173g/CV_project/CV_Backend/api/infoApi.php?id=' + $id, {
         method: 'GET',
     })
     .then(response => response.json())
@@ -57,7 +57,7 @@ function updateInfo($id) {
     description = description.value;
 
     //Update info with PUT
-    fetch('http://localhost/CV_project/CV_Backend/api/infoApi.php?id=' + $id, {
+    fetch('http://studenter.miun.se/~saan1906/writeable/dt173g/CV_project/CV_Backend/api/infoApi.php?id=' + $id, {
         method: 'PUT',
         headers: {
             'Content-Type': 'application/json',

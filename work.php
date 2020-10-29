@@ -4,7 +4,7 @@ if(session_status() == PHP_SESSION_NONE) {
     session_start();
 }
 
-if(!isset($_SESSION['email'])) {
+if(!isset($_SESSION['username'])) {
     header ("Location: login.php?message=2");
 }
 ?>
@@ -30,9 +30,6 @@ if(!isset($_SESSION['email'])) {
         </ul>
     </nav>
     <section>
-        <div id="message-div">
-            <!--Message div-->
-        </div>
         <article>
             <h2 class="admin-h2">Add Work Experience.</h2>
             <form action="" method="get" id="workForm" name="workForm">
@@ -49,6 +46,9 @@ if(!isset($_SESSION['email'])) {
                 <label for="description">Description:</label><br>
                 <input type="textarea" id="work-form-description" name="description"><br>
                 <input class="submit-btn" type="submit" id="add-work-btn" form="workForm" value="Add Work">
+                <div id="message-div-work">
+                    <!--Message div-->
+                </div>
             </form>
             <div id="update-div">
                 <!--Div where the update info goes-->

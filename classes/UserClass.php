@@ -3,7 +3,7 @@ include("config/database.php");
 //klass för att hantera användare och inlogggning
 class User {
     private $db;
-    private $email;
+    private $username;
     private $password;
     //anslut till databas
     function __construct() {
@@ -14,22 +14,20 @@ class User {
     }
 
     //login funktion
-    public function login ($email, $password) {
-        $email=$this->db->real_escape_string($email);
+    public function login ($username, $password) {
+        $username=$this->db->real_escape_string($username);
         $password=$this->db->real_escape_string($password);
-        $sql="SELECT * from cv_user WHERE email='$email' AND password='$password'";
+        $sql="SELECT * from cv_user WHERE username='$username' AND password='$password'";
 
        $result = $this->db->query($sql);
        $count_row = $result->num_rows;
 
        if($count_row > 0) {
-           $_SESSION['email'] = $email;
+           $_SESSION['username'] = $username;
            return true;
        } else {
            return false;
        }
    }
-
 }
-
 ?>

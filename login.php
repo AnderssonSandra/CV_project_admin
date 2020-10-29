@@ -4,18 +4,18 @@ if(session_status() == PHP_SESSION_NONE) {
     session_start();
 }
 
-if(isset($_SESSION['email'])) {
+if(isset($_SESSION['username'])) {
     header ("Location: about.php");
 }
 
-if(isset($_POST['email'])){
-   $email=$_POST['email'];
+if(isset($_POST['username'])){
+   $username=$_POST['username'];
     $password=$_POST['password']; 
 
     $users = new User();
-    if($users->login($email, $password)) {
+    if($users->login($username, $password)) {
         header("location: about.php");
-    } else $message= "<p class='message'>Wrong email or password, please try again.</p>";
+    } else $message= "<p class='message'>Wrong username or password, please try again.</p>";
 
 }
 
@@ -54,8 +54,8 @@ if(isset($_POST['email'])){
             <!-- where prompt / messages will appear -->
             <div id="response"></div>
             <form action="login.php" method="post" id="loginForm" name="loginForm">
-                <label for="email">Email</label><br>
-                <input type="text" id="email" name="email" placeholder="Enter your username" required><br>
+                <label for="username">username</label><br>
+                <input type="text" id="username" name="username" placeholder="Enter your username" required><br>
                 <label for="password">Password</label><br>
                 <input type="text" id="password" name="password" placeholder="Enter your password" required>
                 <input class="submit- btn" type="submit" id="login-button" form="loginForm" value="Log in" onclick="return(submitlogin());">

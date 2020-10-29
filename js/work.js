@@ -2,7 +2,7 @@
 //variables for work
 let workContainer = document.getElementById("admin-show-work"); // container where work show
 let errorDiv = document.getElementById("error-div");
-let messageDiv = document.getElementById("message-div");
+let messageDiv = document.getElementById("message-div-work");
 let addWorkBtn = document.getElementById("add-work-btn");
 let updateContainer = document.getElementById("update-div"); 
 
@@ -25,8 +25,9 @@ if (addWorkBtn) {
 //Show works
 function getWorks() {
     workContainer.innerHTML = '';
+    messageDiv.innerHTML = '';
     //show work with GET
-    fetch('http://localhost/CV_project/CV_Backend/api/workApi.php', {
+    fetch('http://studenter.miun.se/~saan1906/writeable/dt173g/CV_project/CV_Backend/api/workApi.php', {
         method: 'GET',
     })
     .then(response => {
@@ -44,7 +45,7 @@ function getWorks() {
                 <h3>Workplace:</h3>
                 <p>${works.workplace}</p>
                 <h3>Date</h3>
-                <p>${works.startDate}  to  ${works.endDate !== '0000-00-00' ? works.endDate : "Ongoing"}</p>
+                <p>${works.startDate}  to  ${works.endDate !== null ? works.endDate : "Ongoing"}</p>
                 <h3>Buzzwords</h3>
                 <p>${works.buzzwords !== "" ? works.buzzwords : "Inga angivna Buzzwords"}</p>
                 <h3>Description</h3>
@@ -60,22 +61,24 @@ function getWorks() {
     //send message if error
     .catch(err => {
         console.log(err)
-        workContainer.innerHTML = `<p id="errorMsg">Lägg till arbete för att se några utbildningar här</p>`;
+        messageDiv.innerHTML = `<p id="errorMsg">Lägg till arbete för att se några arbeten här</p>`;
     })   
 }
 
 //add work
-function addWork() {
+function addWork(event) {
+    event.preventDefault();
+    
     //value from form
     let title = titleInput.value;
     let workplace = workplaceInput.value;
     let startDate = startDateInput.value;
     let endDate = endDateInput.value;
-    let buzzwords = buzzwordsInput.value !== null ? buzzwordsInput.value : null;
+    let buzzwords = buzzwordsInput.value;
     let description = descriptionInput.value;
 
     //create work with POST
-    fetch('http://localhost/CV_project/CV_Backend/api/workApi.php', {
+    fetch('http://studenter.miun.se/~saan1906/writeable/dt173g/CV_project/CV_Backend/api/workApi.php', {
         method: 'POST',
         headers: {
             'Content-Type': 'application/json',
@@ -92,6 +95,12 @@ function addWork() {
     .then(response => response.json())
     .then(data => {
         getWorks();
+        titleInput.value = "";
+        workplaceInput.value = "";
+        buzzwordsInput.value = "";
+        startDateInput.value = "";
+        endDateInput.value = "";
+        descriptionInput.value = "";
     })
     //send message if error
     .catch(err => {
@@ -102,7 +111,7 @@ function addWork() {
 
 //delete work
 function deleteWork($id) {
-    fetch('http://localhost/CV_project/CV_Backend/api/workApi.php?id=' + $id, {
+    fetch('http://studenter.miun.se/~saan1906/writeable/dt173g/CV_project/CV_Backend/api/workApi.php?id=' + $id, {
         mode: 'cors',
         headers: {
             'Access-Control-Allow-Origin': '*'
@@ -118,7 +127,7 @@ function deleteWork($id) {
 }
 
 function getOneWork($id) {
-    fetch('http://localhost/CV_project/CV_Backend/api/workApi.php?id=' + $id, {
+    fetch('http://studenter.miun.se/~saan1906/writeable/dt173g/CV_project/CV_Backend/api/workApi.php?id=' + $id, {
         mode: 'cors',
         headers: {
             'Access-Control-Allow-Origin': '*'
@@ -160,8 +169,9 @@ function getOneWork($id) {
 }
 
 //update work
-function updateWork($id) {
-        
+function updateWork($id, event) {
+    event.preventDefault();
+
     //form data variables for update work
     let titleUpdate = document.getElementById("work-update-title");
     let workplaceUpdate = document.getElementById("work-update-workplace");
@@ -179,7 +189,7 @@ function updateWork($id) {
     descriptionWorkUpdate = descriptionWorkUpdate.value;
 
     //Update work with PUT
-    fetch('http://localhost/CV_project/CV_Backend/api/workApi.php?id=' + $id, {
+    fetch('http://studenter.miun.se/~saan1906/writeable/dt173g/CV_project/CV_Backend/api/workApi.php?id=' + $id, {
         method: 'PUT',
         headers: {
             'Content-Type': 'application/json',
@@ -196,7 +206,7 @@ function updateWork($id) {
     })
     .then(response => response.json())
     .then(data => {
-        getProjects();
+        getWorks();
     })
     //send message if error
     .catch(err => {

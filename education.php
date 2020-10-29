@@ -4,7 +4,7 @@ if(session_status() == PHP_SESSION_NONE) {
     session_start();
 }
 
-if(!isset($_SESSION['email'])) {
+if(!isset($_SESSION['username'])) {
     header ("Location: login.php?message=2");
 }
 ?>
@@ -43,7 +43,7 @@ if(!isset($_SESSION['email'])) {
                 <label for="description">Description:</label><br>
                 <input type="textarea" name="description" id="education-form-description"><br>
                 <input class="submit-btn" type="submit" id="add-education-btn" form="educationForm" value="Add Education">
-                <div id="message-div">
+                <div id="message-div-education">
                     <!--Message div-->
                 </div>
             </form>

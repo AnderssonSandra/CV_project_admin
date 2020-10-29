@@ -1,7 +1,7 @@
 //submit login
 function submitlogin() {
     var form =document.login;
-    if (form.email.value == "") {
+    if (form.username.value == "") {
         altert("skriv in användarnamn");
         return false;
     } else {

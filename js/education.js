@@ -3,7 +3,7 @@
 let educationContainer = document.getElementById("admin-show-education"); 
 let courseEL = document.getElementById("course"); 
 let errorDiv = document.getElementById("error-div");
-let messageDiv = document.getElementById("message-div");
+let messageDiv = document.getElementById("message-div-education");
 let addEducationBtn = document.getElementById("add-education-btn");
 let updateContainer = document.getElementById("update-div"); 
 
@@ -26,8 +26,9 @@ if (addEducationBtn) {
 //Show Educations
 function getEducations() {
     educationContainer.innerHTML = '';
+    messageDiv.innerHTML = '';
     //show education with GET
-    fetch('http://localhost/CV_project/CV_Backend/api/educationApi.php', {
+    fetch('http://studenter.miun.se/~saan1906/writeable/dt173g/CV_project/CV_Backend/api/educationApi.php', {
         method: 'GET',
     })
     .then(response => {
@@ -45,7 +46,7 @@ function getEducations() {
                 <h3>Name of School:</h3>
                 <p>${educations.school}</p>
                 <h3>Date</h3>
-                <p>${educations.startDate}  -  ${educations.endDate !== '0000-00-00' ? educations.endDate : "Ongoing"}</p>
+                <p>${educations.startDate}  -  ${educations.endDate !== null ? educations.endDate : "Ongoing"}</p>
                 <h3>Description</h3>
                 <p>${educations.description}</p>
                 <button class="submit-btn" onClick="getOneEducation(${educations.id})">Uppdatera</button>
@@ -64,7 +65,9 @@ function getEducations() {
 }
 
 //add Education
-function addEducation() {
+function addEducation(event) {
+    event.preventDefault();
+
     //value from form
     let education = educationInput.value;
     let school = schoolInput.value;
@@ -73,7 +76,7 @@ function addEducation() {
     let description = descriptionEducationInput.value;
     
     //create Education with POST
-    fetch('http://localhost/CV_project/CV_Backend/api/educationApi.php', {
+    fetch('http://studenter.miun.se/~saan1906/writeable/dt173g/CV_project/CV_Backend/api/educationApi.php', {
         method: 'POST',
         headers: {
             'Content-Type': 'application/json',
@@ -89,6 +92,11 @@ function addEducation() {
     .then(response => response.json())
     .then(data => {
         getEducations();
+        educationInput.value = "";
+        schoolInput.value = "";
+        startDateEducationInput.value = "";
+        endDateEducationInput.value = "";
+        descriptionEducationInput.value = "";
     })
     //send message if error
     .catch(err => {
@@ -99,7 +107,7 @@ function addEducation() {
 
 //delete Education
 function deleteEducation($id) {
-    fetch('http://localhost/CV_project/CV_Backend/api/educationApi.php?id=' + $id, {
+    fetch('http://studenter.miun.se/~saan1906/writeable/dt173g/CV_project/CV_Backend/api/educationApi.php?id=' + $id, {
         mode: 'cors',
         headers: {
             'Access-Control-Allow-Origin': '*'
@@ -114,8 +122,10 @@ function deleteEducation($id) {
     .catch((err) => console.log(err));
 }
 
-function getOneEducation($id) {
-    fetch('http://localhost/CV_project/CV_Backend/api/educationApi.php?id=' + $id, {
+function getOneEducation($id, event) {
+    event.preventDefault();
+
+    fetch('http://studenter.miun.se/~saan1906/writeable/dt173g/CV_project/CV_Backend/api/educationApi.php?id=' + $id, {
         mode: 'cors',
         headers: {
             'Access-Control-Allow-Origin': '*'
@@ -172,7 +182,7 @@ function updateEducation($id) {
     descriptionEducationUpdate = descriptionEducationUpdate.value;
 
     //Update education with PUT
-    fetch('http://localhost/CV_project/CV_Backend/api/educationApi.php?id=' + $id, {
+    fetch('http://studenter.miun.se/~saan1906/writeable/dt173g/CV_project/CV_Backend/api/educationApi.php?id=' + $id, {
         method: 'PUT',
         headers: {
             'Content-Type': 'application/json',

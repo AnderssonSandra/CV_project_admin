@@ -3,7 +3,7 @@ let accountContainer = document.getElementById("account-form-div"); //account de
 window.addEventListener('load', getUser(1), false); //ändra så att 1 är id från användaren sen
 
 function getUser($id) {
-    fetch('http://localhost/CV_project/CV_Backend/api/userApi.php?id=' + $id, {
+    fetch('http://studenter.miun.se/~saan1906/writeable/dt173g/CV_project/CV_Backend/api/userApi.php?id=' + $id, {
         mode: 'cors',
         headers: {
             'Access-Control-Allow-Origin': '*'
@@ -29,7 +29,7 @@ function getUser($id) {
 
 //update user
 function updateUser($id) {
-        
+
     //form data variables for update user
     let username = document.getElementById("user-username");
     let password = document.getElementById("user-password");
@@ -39,13 +39,13 @@ function updateUser($id) {
     password = password.value;
 
     //Update user with PUT
-    fetch('http://localhost/CV_project/CV_Backend/api/userApi.php?id=' + $id, {
+    fetch('http://studenter.miun.se/~saan1906/writeable/dt173g/CV_project/CV_Backend/api/userApi.php?id=' + $id, {
         method: 'PUT',
         headers: {
             'Content-Type': 'application/json',
         },
         body: JSON.stringify({
-            'id' : $id,
+            'username' : username,
             'password' : password
         }),
     })

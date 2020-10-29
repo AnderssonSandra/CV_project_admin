@@ -2,7 +2,7 @@
 //variables for project
 let projectContainer = document.getElementById("admin-show-project"); // container where project show
 let errorDiv = document.getElementById("error-div");
-let messageDiv = document.getElementById("message-div");
+let messageDiv = document.getElementById("message-div-project");
 let addprojectBtn = document.getElementById("add-project-btn");
 let updateContainer = document.getElementById("update-div"); 
 
@@ -26,8 +26,9 @@ if (addprojectBtn) {
 //Show projects
 function getProjects() {
     projectContainer.innerHTML = '';
+    messageDiv.innerHTML = '';
     //show project with GET
-    fetch('http://localhost/CV_project/CV_Backend/api/projectApi.php', {
+    fetch('http://studenter.miun.se/~saan1906/writeable/dt173g/CV_project/CV_Backend/api/projectApi.php', {
         method: 'GET',
     })
     .then(response => {
@@ -49,7 +50,7 @@ function getProjects() {
                 <h3>Techniques</h3>
                 <p>${projects.techniques !== "" ? projects.techniques : "Inga angivna Tekniker"}</p>
                 <h3>Date:</h3>
-                <p>${projects.startDate}  to  ${projects.endDate !== '0000-00-00' ? projects.endDate : "Ongoing"}</p>
+                <p>${projects.startDate}  to  ${projects.endDate !== null ? projects.endDate : "Ongoing"}</p>
                 <h3>Description</h3>
                 <p>${projects.description}</p>
                 <button class="submit-btn" onClick="getOneProject(${projects.id})">Uppdatera</button>
@@ -68,18 +69,20 @@ function getProjects() {
 }
 
 //add project
-function addProject() {
+function addProject(event) {
+    event.preventDefault();
+    
     //value from form
     let name = nameInput.value;
-    let link = linkInput.value !== null ? linkInput.value : null;
-    let github = githubInput.value !== null ? githubInput.value : null;
-    let techniques = techniquesInput.value !== null ? techniquesInput.value : null;
+    let link = linkInput.value;
+    let github = githubInput.value;
+    let techniques = techniquesInput.value;
     let startDate = startDateInput.value;
     let endDate = endDateInput.value;
     let description = descriptionInput.value;
 
     //create project with POST
-    fetch('http://localhost/CV_project/CV_Backend/api/projectApi.php', {
+    fetch('http://studenter.miun.se/~saan1906/writeable/dt173g/CV_project/CV_Backend/api/projectApi.php', {
         method: 'POST',
         headers: {
             'Content-Type': 'application/json',
@@ -97,17 +100,24 @@ function addProject() {
     .then(response => response.json())
     .then(data => {
         getProjects();
+        nameInput.value = "";
+        linkInput.value = "";
+        githubInput.value = "";
+        techniquesInput.value = "";
+        startDateInput.value = "";
+        endDateInput.value = "";
+        descriptionInput.value = "";
     })
     //send message if error
     .catch(err => {
         console.log(err)
-        messageDiv.innerHTML = `<p id="errorMsg">Kunde inte lägga till arbetet</p>`;
+        messageDiv.innerHTML = `<p id="errorMsg">Kunde inte lägga till Projectet</p>`;
     })
 }
 
 //delete project
 function deleteProject($id) {
-    fetch('http://localhost/CV_project/CV_Backend/api/projectApi.php?id=' + $id, {
+    fetch('http://studenter.miun.se/~saan1906/writeable/dt173g/CV_project/CV_Backend/api/projectApi.php?id=' + $id, {
         mode: 'cors',
         headers: {
             'Access-Control-Allow-Origin': '*'
@@ -122,8 +132,10 @@ function deleteProject($id) {
     .catch((err) => console.log(err));
 }
 
-function getOneProject($id) {
-    fetch('http://localhost/CV_project/CV_Backend/api/projectApi.php?id=' + $id, {
+function getOneProject($id, event) {
+    event.preventDefault();
+
+    fetch('http://studenter.miun.se/~saan1906/writeable/dt173g/CV_project/CV_Backend/api/projectApi.php?id=' + $id, {
         mode: 'cors',
         headers: {
             'Access-Control-Allow-Origin': '*'
@@ -189,7 +201,7 @@ function updateProject($id) {
     descriptionProjectUpdate = descriptionProjectUpdate.value;
 
     //Update project with PUT
-    fetch('http://localhost/CV_project/CV_Backend/api/projectApi.php?id=' + $id, {
+    fetch('http://studenter.miun.se/~saan1906/writeable/dt173g/CV_project/CV_Backend/api/projectApi.php?id=' + $id, {
         method: 'PUT',
         headers: {
             'Content-Type': 'application/json',

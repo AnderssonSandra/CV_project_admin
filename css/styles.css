@@ -99,6 +99,13 @@ h2 {
     font-size: 1.4em;
 }
 
+#errorMsg {
+    color: #bc8373;
+    font-weight: bold;
+    text-align: center;
+    margin: 2em 0;
+}
+
 /*responsive design for fonts*/
 /*tablet*/
 @media (max-width: 8500px) {
