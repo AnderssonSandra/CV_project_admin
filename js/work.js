@@ -169,8 +169,7 @@ function getOneWork($id) {
 }
 
 //update work
-function updateWork($id, event) {
-    event.preventDefault();
+function updateWork($id) {
 
     //form data variables for update work
     let titleUpdate = document.getElementById("work-update-title");

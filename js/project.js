@@ -132,8 +132,7 @@ function deleteProject($id) {
     .catch((err) => console.log(err));
 }
 
-function getOneProject($id, event) {
-    event.preventDefault();
+function getOneProject($id) {
 
     fetch('http://studenter.miun.se/~saan1906/writeable/dt173g/CV_project/CV_Backend/api/projectApi.php?id=' + $id, {
         mode: 'cors',

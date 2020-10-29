@@ -122,8 +122,7 @@ function deleteEducation($id) {
     .catch((err) => console.log(err));
 }
 
-function getOneEducation($id, event) {
-    event.preventDefault();
+function getOneEducation($id) {
 
     fetch('http://studenter.miun.se/~saan1906/writeable/dt173g/CV_project/CV_Backend/api/educationApi.php?id=' + $id, {
         mode: 'cors',
